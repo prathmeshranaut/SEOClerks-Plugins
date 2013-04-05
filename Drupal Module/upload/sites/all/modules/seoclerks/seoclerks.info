@@ -1,0 +1,5 @@
+name = SEOClerks Ads
+description = "Adds ads to the bottom of the content"
+package= "SEOClerks"
+core = 7.x
+version = "7.x-1.3"

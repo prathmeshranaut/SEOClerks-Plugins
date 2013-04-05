@@ -1,0 +1,219 @@
+<?php
+/*
+Plugin name: SEOClerks Ads
+Plugin URI: http://seoclerks.com/
+Description: A plugin which insert blocks to place SEOClerks ads into
+Author: Aayush Ranaut
+Author URI: http://liquidserve.com/
+Email: aayush.ranaut@gmail.com
+Version: 1.0
+*/
+function seoclerks_menu()
+{
+	//A function to include this module in the navigation bar
+	$items = array();
+	$items['admin/settings/seoclerks'] = array(
+				'title'	=> t("Manage SEOClerks Ads"),
+				'description'	=> t("Insert all the API Settings"),
+				'page callback'		=> 'drupal_get_form',
+				'page arguments' => array('seoclerks_settings'),
+				'access arguments' => array('access administration pages'),
+				'type' => MENU_NORMAL_ITEM,
+	);
+	
+	return $items;
+}
+
+function seoclerks_settings()
+{
+	//Getting the number of blocks to display
+	//Creating the SEOCLerks API Settings in the Drupal Admin
+	$form["seoclerks_manage_num"]= array(
+					"#type"		=> 'textfield',
+					"#title"	=> t("Number of Ads"),
+					'#default_value' => variable_get('seoclerks_manage_num', '1'),
+					"#description" => t("The number of blocks you want to add to the block section")
+	);
+	//Creating the SEOCLerks API Settings in the Drupal Admin
+	$form["seoclerks_manage_affiliate"]= array(
+					"#type"		=> 'textfield',
+					"#title"	=> t("Affiliate ID"),
+					'#default_value' => variable_get('seoclerks_manage_affiliate', ''),
+					"#description" => t("[Optional] Enter your SEOClerks Affiliate ID")
+	);
+	//Adding Search term to array
+	$form["seoclerks_manage_search"]= array(
+					"#type"		=> 'textfield',
+					"#title"	=> t("Search Term"),
+					'#default_value' => variable_get('seoclerks_manage_search', ''),
+					"#description" => t("[Optional] Enter a specific term to search for. Will cause the API to search service titles for this term only")
+	);
+	//Adding Seller Username to array
+	$form["seoclerks_manage_username"]= array(
+					"#type"		=> 'textfield',
+					"#title"	=> t("Seller Username"),
+					'#default_value' => variable_get('seoclerks_manage_username', ''),
+					"#description" => t("[Optional] Enter a specific seller username, only services by this seller will be selected")
+	);
+	//Adding the Maximum price
+	$form["seoclerks_manage_price"]= array(
+					"#type"		=> 'textfield',
+					"#title"	=> t("Maximum Price"),
+					'#default_value' => variable_get('seoclerks_manage_price', ''),
+					"#description" => t("[Optional] The maximum price a service can be listed for, must be a whole number")
+	);
+	
+	//All the categories
+	$form["seoclerks_manage_category"]= array(
+					"#type"		=> 'select',
+					"#title"	=> t("Category"),
+					'#default_value' => variable_get('seoclerks_manage_category', ''),
+					"#description" => t("Select a specific category if you want services from one specific category only"),
+					"#options"	=> array(
+							"0" => "Any Category",
+							"15" => "Article Translating",
+							"16" => "Article Writing",
+							"66" => "Audio & Music",
+							"18" => "Blackhat/Bulk Links",
+							"47" => "Blog Comments",
+							"50" => "Link Pyramids",
+							"33" => "Link Wheel",
+							"57" => "Lists",
+							"38" => "SEnuke X",
+							"49" => "Wiki Links",
+							"70" => "XRumer",
+							"20" => "Blogs",
+							"59" => "Body Ads",
+							"51" => "Data Entry",
+							"42" => "Design",
+							"19" => "Forums",
+							"36" => "Forum Posts",
+							"31" => "Signature Links",
+							"64" => "Graphics",
+							"17" => "Link Building",
+							"30" => "Site Link Sales",
+							"21" => "Other",
+							"63" => "Gaming",
+							"67" => "Press Release",
+							"29" => "Programming",
+							"35" => "Proxies",
+							"68" => "Question/Answer",
+							"69" => "Yahoo Answers",
+							"62" => "Reports & Whitepapers",
+							"24" => "Servers",
+							"23" => "Social Networks",
+							"39" => "Facebook Fans/Likes",
+							"40" => "Google +1",
+							"55" => "Instagram",
+							"44" => "Pinterest",
+							"56" => "Reverbnation",
+							"48" => "Social Bookmarks",
+							"54" => "SoundCloud",
+							"34" => "Twitter Followers",
+							"53" => "Youtube",
+							"37" => "Traffic",
+							"46" => "Video",
+							"22" => "Web 2.0",
+							"61" => "Hubpage",
+							"60" => "Squidoo",
+							"25" => "Webhosting",
+							"52" => "Cloud Hosting",
+							"27" => "Dedicated",
+							"26" => "VPS"		//Phew that was a huge list to edit ;)							
+							)
+	);
+	//User Level
+	$form["seoclerks_manage_level"]= array(
+					"#type"		=> 'select',
+					"#title"	=> t("User Level"),
+					'#default_value' => variable_get('seoclerks_manage_level', ''),
+					"#description" => t("Select the minimum User Level a seller must have in order to be selected"),
+					"#options"	=> array(
+							'1'	=> '1',
+							'2'	=> '2',
+							'3'	=> '3',
+							'4'	=> 'X'					
+							)
+	);
+	//Adding only the guaranteed services
+	$form["seoclerks_manage_guaranteed"]= array(
+					"#type"		=> 'select',
+					"#title"	=> t("Guaranteed Only"),
+					'#default_value' => variable_get('seoclerks_manage_guaranteed', ''),
+					"#description" => t("Only select services that are guaranteed"),
+					"#options"	=> array(
+							'0'	=> 'No',
+							'1'	=> 'Yes'
+							)
+	);
+	//Adding the services which are subscription based
+	$form["seoclerks_manage_subscription"]= array(
+					"#type"		=> 'select',
+					"#title"	=> t("Subscription Only"),
+					'#default_value' => variable_get('seoclerks_manage_subscription', ''),
+					"#description" => t("Only select services that are subscription services"),
+					"#options"	=> array(
+							'0'	=> 'No',
+							'1'	=> 'Yes'
+							)
+	);
+	
+	//On sale
+	$form["seoclerks_manage_on_sale"]= array(
+					"#type"		=> 'select',
+					"#title"	=> t("On Sale Only"),
+					'#default_value' => variable_get('seoclerks_manage_on_sale', ''),
+					"#description" => t("Only select services that are currently on sale"),
+					"#options"	=> array(
+							'0'	=> 'No',
+							'1'	=> 'Yes'
+							)
+	);
+	
+	//Staff certified services only
+	$form["seoclerks_manage_staff"]= array(
+					"#type"		=> 'select',
+					"#title"	=> t("Staff Certified Only"),
+					'#default_value' => variable_get('seoclerks_manage_staff', ''),
+					"#description" => t("Only select services that are staff certified"),
+					"#options"	=> array(
+							'0'	=> 'No',
+							'1'	=> 'Yes'
+							)
+	);
+	
+	return system_settings_form($form);
+}
+
+function seoclerks_block_view($delta = '')
+{
+    	//Making the ad URL
+    	$url = "http://localhost:8888/unserilaize.php?type=inlinead&s=". variable_get('seoclerks_manage_search')."&aff=".variable_get('seoclerks_manage_affiliate')."&by=".variable_get('seoclerks_manage_username')."&p=". variable_get('seoclerks_manage_price')."&c=".variable_get('seoclerks_manage_category') ."&ul=" .variable_get('seoclerks_manage_user_level'). "&g=" .variable_get('seoclerks_manage_guaranteed')."&sub=" .variable_get('seoclerks_manage_subscription')."&os=" .variable_get('seoclerks_manage_on_sale')."&sp=" .variable_get('seoclerks_manage_staff');
+    	
+    	//Making the content :)
+    	$content = "<div id='ad_".$delta."'></div>
+		<script type=\"application/javascript\">
+		(function($) {
+		var url = '".$url."';
+		jQuery.noConflict();
+		jQuery.get(url, function(data) {
+		jQuery('#ad_".$delta."').html(data);
+		});	
+		})( jQuery );
+		</script>";
+    	
+    	//Returning just the content without subject.
+		$blocks["content"] = $content;
+		return $blocks;
+
+}
+
+function seoclerks_block_info() {
+	for($i=1; $i <= variable_get('seoclerks_manage_num', '1'); $i++)
+	{
+		$name = 'seoclerks_'. $i;
+		$blocks[$name]['info'] = t('SEOClerks '. $i);
+		$blocks[$name]['cache'] = DRUPAL_CACHE_PER_ROLE; //Default
+	}
+	return $blocks;
+}
