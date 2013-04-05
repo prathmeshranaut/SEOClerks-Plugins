@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="SEOClerks" title="SEOClerks Signature Plugin" version_string="1.0.0" version_id="1" url="http://seoclerks.com/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates/>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="template_create" execute_order="10" callback_class="SEOClerks_Listener" callback_method="template_create" active="1" description="Listen to template Create"/>
+    <listener event_id="template_hook" execute_order="10" callback_class="SEOClerks_Listener" callback_method="template_hook" active="1" description="Listen to template hooks"/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <optiongroups>
+    <group group_id="seoclerks_api_settings" display_order="1" debug_only="0"/>
+    <option option_id="affiliate_id" edit_format="textbox" data_type="integer" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="1"/>
+    </option>
+    <option option_id="category" edit_format="select" data_type="string" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params>0  = Any Category
+15 = Article Translating
+16 = Article Writing
+66 = Audio Music
+18 = Blackhat/Bulk Links
+47 = Blog Comments
+50 = Link Pyramids
+33 = Link Wheel
+57 = Lists
+38 = SEnuke X
+49 = Wiki Links
+70 = XRumer
+20 = Blogs
+59 = Body Ads
+51 = Data Entry
+42 = Design
+19 = Forums
+36 = Forum Posts
+31 = Signature Links
+64 = Graphics
+17 = Link Building
+30 = Site Link Sales
+21 = Other
+63 = Gaming
+67 = Press Release
+29 = Programming
+35 = Proxies
+68 = Question/Answer
+69 = Yahoo Answers
+62 = Reports Whitepapers
+24 = Servers
+23 = Social Networks
+39 = Facebook Fans/Likes
+40 = Google +1
+55 = Instagram
+44 = Pinterest
+56 = Reverbnation
+48 = Social Bookmarks
+54 = SoundCloud
+34 = Twitter Followers
+53 = Youtube
+37 = Traffic
+46 = Video
+22 = Web 2.0
+61 = Hubpage
+60 = Squidoo
+25 = Webhosting
+52 = Cloud Hosting
+27 = Dedicated
+26 = VPS</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="4"/>
+    </option>
+    <option option_id="guaranteed_only" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="5"/>
+    </option>
+    <option option_id="max_price" edit_format="textbox" data_type="numeric" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="9"/>
+    </option>
+    <option option_id="on_sale_only" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="7"/>
+    </option>
+    <option option_id="search_term" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="2"/>
+    </option>
+    <option option_id="seller_username" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="1"/>
+    </option>
+    <option option_id="staff_certified_only" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="8"/>
+    </option>
+    <option option_id="subscription_only" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="6"/>
+    </option>
+    <option option_id="user_level" edit_format="select" data_type="string" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params>1 = 1
+2 = 2
+3 = 3
+4 = X</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="seoclerks_api_settings" display_order="3"/>
+    </option>
+  </optiongroups>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="option_affiliate_id" version_id="1" version_string="1.0.0"><![CDATA[Affiliate ID]]></phrase>
+    <phrase title="option_affiliate_id_explain" version_id="1" version_string="1.0.0"><![CDATA[[Optional] Your affiliate ID]]></phrase>
+    <phrase title="option_category" version_id="1" version_string="1.0.0"><![CDATA[Category]]></phrase>
+    <phrase title="option_category_explain" version_id="1" version_string="1.0.0"><![CDATA[Select a specific category if you want services from one specific category only]]></phrase>
+    <phrase title="option_group_seoclerks_api_settings" version_id="1" version_string="1.0.0"><![CDATA[SEOClerks API Settings]]></phrase>
+    <phrase title="option_group_seoclerks_api_settings_description" version_id="1" version_string="1.0.0"><![CDATA[Set the various API Settings for SEOClerks plugin.]]></phrase>
+    <phrase title="option_guaranteed_only" version_id="1" version_string="1.0.0"><![CDATA[Guaranteed Only]]></phrase>
+    <phrase title="option_guaranteed_only_explain" version_id="1" version_string="1.0.0"><![CDATA[Only select services that are guaranteed]]></phrase>
+    <phrase title="option_max_price" version_id="1" version_string="1.0.0"><![CDATA[Maximum Price]]></phrase>
+    <phrase title="option_max_price_explain" version_id="1" version_string="1.0.0"><![CDATA[[Optional] The maximum price a service can be listed for, must be a whole number]]></phrase>
+    <phrase title="option_on_sale_only" version_id="1" version_string="1.0.0"><![CDATA[On Sale Only]]></phrase>
+    <phrase title="option_on_sale_only_explain" version_id="1" version_string="1.0.0"><![CDATA[Only select services that are currently on sale]]></phrase>
+    <phrase title="option_search_term" version_id="1" version_string="1.0.0"><![CDATA[Search Term]]></phrase>
+    <phrase title="option_search_term_explain" version_id="1" version_string="1.0.0"><![CDATA[[Optional] Enter a specific term to search for. Will cause the API to search service titles for this term only]]></phrase>
+    <phrase title="option_seller_username" version_id="1" version_string="1.0.0"><![CDATA[Seller Username]]></phrase>
+    <phrase title="option_seller_username_explain" version_id="1" version_string="1.0.0"><![CDATA[[Optional] Enter a specific seller username, only services by this seller will be selected.]]></phrase>
+    <phrase title="option_staff_certified_only" version_id="1" version_string="1.0.0"><![CDATA[Staff Certified Only]]></phrase>
+    <phrase title="option_staff_certified_only_explain" version_id="1" version_string="1.0.0"><![CDATA[Only select services that are staff certified]]></phrase>
+    <phrase title="option_subscription_only" version_id="1" version_string="1.0.0"><![CDATA[Subscription Only]]></phrase>
+    <phrase title="option_subscription_only_explain" version_id="1" version_string="1.0.0"><![CDATA[Only select services that are subscription services]]></phrase>
+    <phrase title="option_user_level" version_id="1" version_string="1.0.0"><![CDATA[User Level]]></phrase>
+    <phrase title="option_user_level_explain" version_id="1" version_string="1.0.0"><![CDATA[Select the minimum User Level a seller must have in order to be selected]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates>
+    <template title="ls_seoclerks_signature" version_id="1" version_string="1.0.0"><![CDATA[{$message}
+<div class="baseHtml signature ugc">
+<aside id="seoclerks_ad_{$adLink}">
+</aside>
+<script type="application/javascript">
+!function($, window, document, _undefined)
+{
+XenForo.Ad{$adLink} = function($ad)
+{
+var url = '{xen:raw $url}';
+if(url != '')
+{
+$.get(url, function(data) {
+  $('#seoclerks_ad_{$adLink}').html(data);
+});
+}
+};
+    XenForo.register('#seoclerks_ad_{$adLink}', 'XenForo.Ad{$adLink}');
+}
+(jQuery, this, document);
+</script>
+</div>]]></template>
+  </templates>
+  <bb_code_media_sites/>
+</addon>
