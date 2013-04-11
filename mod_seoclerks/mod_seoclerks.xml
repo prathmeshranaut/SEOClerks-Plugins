@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="module">
+        <name>SEOClerks Ads</name>
+        <author>Aayush Ranaut</author>
+        <creationDate>April 7th, 2013</creationDate>
+        <copyright>SEOClerks</copyright>
+        <license>GNU General Public License</license>
+        <authorEmail>aayush.ranaut@gmail.com</authorEmail>
+        <authorUrl>http://www.liquidserve.com</authorUrl>
+        <version>1.0</version>
+        <description>Displays the SEOClerks ads with the help of API.</description>
+        <files>
+                <filename module="seoclerks">mod_seoclerks.php</filename>
+                <filename>mod_seoclerks.xml</filename>
+                <folder>tmpl</folder>
+        </files>
+        <config>
+                <fields name="params">
+                        <fieldset name="basic">
+                                <field name="affiliate"  type="text" default="" label="Affiliate ID" description="[Optional] Your affiliate ID" />
+                                <field name="search"  type="text" default="" label="Search Term" description="[Optional] Enter a specific term to search for. Will cause the API to search service titles for this term only" />
+                                <field name="username"  type="text" default="" label="Seller Username" description="[Optional] Enter a specific seller username, only services by this seller will be selected" />
+                                <field name="price"  type="text" default="" label="Maximum Price" description="[Optional] The maximum price a service can be listed for, must be a whole number" />
+                                <field name="category" type="list" default="0" label="Category" description="Select a specific category if you want services from one specific category only">
+                                	<option value="0">Any Category</option>
+									<option value="15">Article Translating</option>
+									<option value="16">Article Writing</option>
+									<option value="66">Audio &amp; Music</option>
+									<option value="18">Blackhat/Bulk Links</option>
+									<option value="47">Blog Comments</option>
+									<option value="50">Link Pyramids</option>
+									<option value="33">Link Wheel</option>
+									<option value="57">Lists</option>
+									<option value="38">SEnuke X</option>
+									<option value="49">Wiki Links</option>
+									<option value="70">XRumer</option>
+									<option value="20">Blogs</option>
+									<option value="59">Body Ads</option>
+									<option value="51">Data Entry</option>
+									<option value="42">Design</option>
+									<option value="19">Forums</option>
+									<option value="36">Forum Posts</option>
+									<option value="31">Signature Links</option>
+									<option value="64">Graphics</option>
+									<option value="17">Link Building</option>
+									<option value="30">Site Link Sales</option>
+									<option value="21">Other</option>
+									<option value="63">Gaming</option>
+									<option value="67">Press Release</option>
+									<option value="29">Programming</option>
+									<option value="35">Proxies</option>
+									<option value="68">Question/Answer</option>
+									<option value="69">Yahoo Answers</option>
+									<option value="62">Reports &amp; Whitepapers</option>
+									<option value="24">Servers</option>
+									<option value="23">Social Networks</option>
+									<option value="39">Facebook Fans/Likes</option>
+									<option value="40">Google +1</option>
+									<option value="55">Instagram</option>
+									<option value="44">Pinterest</option>
+									<option value="56">Reverbnation</option>
+									<option value="48">Social Bookmarks</option>
+									<option value="54">SoundCloud</option>
+									<option value="34">Twitter Followers</option>
+									<option value="53">Youtube</option>
+									<option value="37">Traffic</option>
+									<option value="46">Video</option>
+									<option value="22">Web 2.0</option>
+									<option value="61">Hubpage</option>
+									<option value="60">Squidoo</option>
+									<option value="25">Webhosting</option>
+									<option value="52">Cloud Hosting</option>
+									<option value="27">Dedicated</option>
+									<option value="26">VPS</option>
+                                </field>
+                                <field name="level" type="list" default="1" label="User Level" description="Select the minimum User Level a seller must have in order to be selected">
+                                	<option value="1">1</option>
+                                	<option value="2">2</option>
+                                	<option value="3">3</option>
+                                	<option value="4">X</option>
+                                </field>
+                                <field name="guaranteed" type="list" default="0" label="Guaranteed Only" description="Only select services that are guaranteed">
+                                	<option value="0">No</option>
+                                	<option value="1">Yes</option>
+                                </field>
+                                <field name="subscription" type="list" default="0" label="Subscription Only" description="Only select services that are subscription services">
+                                	<option value="0">No</option>
+                                	<option value="1">Yes</option>
+                                </field>
+                                <field name="on_sale" type="list" default="0" label="On Sale Only" description="Only select services that are currently on sale">
+                                	<option value="0">No</option>
+                                	<option value="1">Yes</option>
+                                </field>
+                                <field name="staff" type="list" default="0" label="Staff Certified Only" description="Only select services that are staff certified">
+                                	<option value="0">No</option>
+                                	<option value="1">Yes</option>
+                                </field>
+                                <field name="before_content" type="radio" class="btn-group" default="1" label="Before Content" description="Display the SEOClerks ad before the content">
+                                	<option value="0">No</option>
+                                	<option value="1">Yes</option>
+                                </field>
+                                <field name="after_content" type="radio" class="btn-group" default="1" label="After Content" description="Display the SEOClerks ad after the content">
+                                	<option value="0">No</option>
+                                	<option value="1">Yes</option>
+                                </field>
+                        </fieldset>
+                </fields>
+        </config>
+</extension>
