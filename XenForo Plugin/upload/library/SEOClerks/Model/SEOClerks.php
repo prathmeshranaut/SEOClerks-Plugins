@@ -1,6 +1,7 @@
 <?php
 /*
- * Super awesome SEOCLerks Plugins Model which handles all the data it is passed to it and returns stuff to controller or helper 
+ * Super awesome SEOCLerks Plugins Model which handles all the data it is passed to it and returns stuff to controller or helper. But going to return none of them this time
+ * cause it's time to listen to the Listener! 
  */
 	class SEOClerks_Model_SEOClerks extends XenForo_Model
 	{
