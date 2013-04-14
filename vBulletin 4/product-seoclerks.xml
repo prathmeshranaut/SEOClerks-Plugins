@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<product productid="seoclerks" active="1">
+	<title>SEOClerks Ads</title>
+	<description>Displays SEOClerks ads in the signature of users.</description>
+	<version>1.0.0</version>
+	<url>http://seoclerks.com/</url>
+	<versioncheckurl />
+	<dependencies>
+	</dependencies>
+	<codes>
+	</codes>
+	<templates>
+	</templates>
+	<stylevardfns>
+	</stylevardfns>
+	<stylevars>
+	</stylevars>
+	<plugins>
+		<plugin active="1" executionorder="5">
+			<title>SEOClerks</title>
+			<hookname>postbit_display_start</hookname>
+			<phpcode><![CDATA[if (THIS_SCRIPT == 'showthread') {
+	global $vbulletin;
+	if($post['showsignature'] == 1)
+	{
+		if(empty($post['signature'])){
+			$url = 'http://www.seoclerks.com/api?type=inlinead&s='.$vbulletin->options['search'].'&aff='.$vbulletin->options['affiliate'].'&by='.$vbulletin->options['seller'].'&c='.$vbulletin->options['category'].'&ul='.$vbulletin->options['level'].'&am=1&g='.$vbulletin->options['guaranteed'].'&sub='.$vbulletin->options['subscription'].'&os='.$vbulletin->options['onsale'].'&sp='.$vbulletin->options['staff'].'&oby=&oh=&f=singlehtml';
+			$ad = file_get_contents($url);
+			$post['showsignature'] = 1;
+			$post['signature'] = $ad;
+			$post['signatureparsed'] = $ad;
+		}
+	}
+	elseif($post['showsignature'] == 0)
+	{
+		$url = 'http://www.seoclerks.com/api?type=inlinead&s='.$vbulletin->options['search'].'&aff='.$vbulletin->options['affiliate'].'&by='.$vbulletin->options['seller'].'&c='.$vbulletin->options['category'].'&ul='.$vbulletin->options['level'].'&am=1&g='.$vbulletin->options['guaranteed'].'&sub='.$vbulletin->options['subscription'].'&os='.$vbulletin->options['onsale'].'&sp='.$vbulletin->options['staff'].'&oby=&oh=&f=singlehtml';
+		$ad = file_get_contents($url);
+		$post['showsignature'] = 1;
+		$post['signature'] = $ad;
+		$post['signatureparsed'] = $ad;
+	}
+}]]></phpcode>
+		</plugin>
+	</plugins>
+	<phrases>
+		<phrasetype name="vBulletin Settings" fieldname="vbsettings">
+			<phrase name="setting_affiliate_desc" date="1365938311" username="Aayush" version="1.0.0"><![CDATA[[Optional] Your affiliate ID]]></phrase>
+			<phrase name="setting_affiliate_title" date="1365938311" username="Aayush" version="1.0.0"><![CDATA[Affiliate ID]]></phrase>
+			<phrase name="setting_category_desc" date="1365950599" username="Aayush" version="1.0.0"><![CDATA[Select a specific category if you want services from one specific category only]]></phrase>
+			<phrase name="setting_category_title" date="1365950599" username="Aayush" version="1.0.0"><![CDATA[Category]]></phrase>
+			<phrase name="setting_guaranteed_desc" date="1365951409" username="Aayush" version="1.0.0"><![CDATA[Only select services that are guaranteed]]></phrase>
+			<phrase name="setting_guaranteed_title" date="1365951409" username="Aayush" version="1.0.0"><![CDATA[Guaranteed Only]]></phrase>
+			<phrase name="setting_level_desc" date="1365951190" username="Aayush" version="1.0.0"><![CDATA[Select the minimum User Level a seller must have in order to be selected]]></phrase>
+			<phrase name="setting_level_title" date="1365951190" username="Aayush" version="1.0.0"><![CDATA[User Level]]></phrase>
+			<phrase name="setting_onsale_desc" date="1365951490" username="Aayush" version="1.0.0"><![CDATA[Only select services that are currently on sale]]></phrase>
+			<phrase name="setting_onsale_title" date="1365951490" username="Aayush" version="1.0.0"><![CDATA[On Sale Only]]></phrase>
+			<phrase name="setting_price_desc" date="1365950088" username="Aayush" version="1.0.0"><![CDATA[[Optional] The maximum price a service can be listed for, must be a whole number]]></phrase>
+			<phrase name="setting_price_title" date="1365950088" username="Aayush" version="1.0.0"><![CDATA[Maximum Price]]></phrase>
+			<phrase name="setting_search_desc" date="1365938300" username="Aayush" version="1.0.0"><![CDATA[[Optional] Enter a specific term to search for. Will cause the API to search service titles for this term only]]></phrase>
+			<phrase name="setting_search_title" date="1365938300" username="Aayush" version="1.0.0"><![CDATA[Search Term]]></phrase>
+			<phrase name="setting_seller_desc" date="1365950094" username="Aayush" version="1.0.0"><![CDATA[[Optional] Enter a specific seller username, only services by this seller will be selected]]></phrase>
+			<phrase name="setting_seller_title" date="1365950094" username="Aayush" version="1.0.0"><![CDATA[Seller Username]]></phrase>
+			<phrase name="setting_staff_desc" date="1365951520" username="Aayush" version="1.0.0"><![CDATA[Only select services that are staff certified]]></phrase>
+			<phrase name="setting_staff_title" date="1365951520" username="Aayush" version="1.0.0"><![CDATA[Staff Certified Only]]></phrase>
+			<phrase name="setting_subscription_desc" date="1365951461" username="Aayush" version="1.0.0"><![CDATA[Only select services that are subscription services]]></phrase>
+			<phrase name="setting_subscription_title" date="1365951461" username="Aayush" version="1.0.0"><![CDATA[Subscription Only]]></phrase>
+			<phrase name="settinggroup_seoclerks" date="1365938143" username="Aayush" version="1.0.0"><![CDATA[SEOClerks]]></phrase>
+		</phrasetype>
+	</phrases>
+	<options>
+		<settinggroup name="seoclerks" displayorder="6700">
+			<setting varname="affiliate" displayorder="1">
+				<datatype>posint</datatype>
+			</setting>
+			<setting varname="search" displayorder="2">
+				<datatype>free</datatype>
+			</setting>
+			<setting varname="seller" displayorder="3">
+				<datatype>free</datatype>
+			</setting>
+			<setting varname="price" displayorder="4">
+				<datatype>posint</datatype>
+			</setting>
+			<setting varname="category" displayorder="5">
+				<datatype>free</datatype>
+				<optioncode><![CDATA[<select name=\"setting[$setting[varname]]\" tabindex=\"1\" class=\"bginput\">
+<option value=\"0\" " . iif($setting['value']==0,'selected="selected"') . ">Any Category</option>
+<option value=\"15\" " . iif($setting['value']==15,'selected="selected"') . ">Article Translating</option>
+<option value=\"16\" " . iif($setting['value']==16,'selected="selected"') . ">Article Writing</option>
+<option value=\"66\" " . iif($setting['value']==66,'selected="selected"') . ">Audio &amp; Music</option>
+<option value=\"18\" " . iif($setting['value']==18,'selected="selected"') . ">Blackhat/Bulk Links</option>
+<option value=\"47\" " . iif($setting['value']==47,'selected="selected"') . ">Blog Comments</option>
+<option value=\"50\" " . iif($setting['value']==50,'selected="selected"') . ">Link Pyramids</option>
+<option value=\"33\" " . iif($setting['value']==33,'selected="selected"') . ">Link Wheel</option>
+<option value=\"57\" " . iif($setting['value']==57,'selected="selected"') . ">Lists</option>
+<option value=\"38\" " . iif($setting['value']==38,'selected="selected"') . ">SEnuke X</option>
+<option value=\"49\" " . iif($setting['value']==49,'selected="selected"') . ">Wiki Links</option>
+<option value=\"70\" " . iif($setting['value']==70,'selected="selected"') . ">XRumer</option>
+<option value=\"20\" " . iif($setting['value']==20,'selected="selected"') . ">Blogs</option>
+<option value=\"59\" " . iif($setting['value']==59,'selected="selected"') . ">Body Ads</option>
+<option value=\"51\" " . iif($setting['value']==51,'selected="selected"') . ">Data Entry</option>
+<option value=\"42\" " . iif($setting['value']==42,'selected="selected"') . ">Design</option>
+<option value=\"19\" " . iif($setting['value']==19,'selected="selected"') . ">Forums</option>
+<option value=\"36\" " . iif($setting['value']==36,'selected="selected"') . ">Forum Posts</option>
+<option value=\"31\" " . iif($setting['value']==31,'selected="selected"') . ">Signature Links</option>
+<option value=\"64\" " . iif($setting['value']==64,'selected="selected"') . ">Graphics</option>
+<option value=\"17\" " . iif($setting['value']==17,'selected="selected"') . ">Link Building</option>
+<option value=\"30\" " . iif($setting['value']==30,'selected="selected"') . ">Site Link Sales</option>
+<option value=\"21\" " . iif($setting['value']==21,'selected="selected"') . ">Other</option>
+<option value=\"63\" " . iif($setting['value']==63,'selected="selected"') . ">Gaming</option>
+<option value=\"67\" " . iif($setting['value']==67,'selected="selected"') . ">Press Release</option>
+<option value=\"29\" " . iif($setting['value']==29,'selected="selected"') . ">Programming</option>
+<option value=\"35\" " . iif($setting['value']==35,'selected="selected"') . ">Proxies</option>
+<option value=\"68\" " . iif($setting['value']==68,'selected="selected"') . ">Question/Answer</option>
+<option value=\"69\" " . iif($setting['value']==69,'selected="selected"') . ">Yahoo Answers</option>
+<option value=\"62\" " . iif($setting['value']==62,'selected="selected"') . ">Reports &amp; Whitepapers</option>
+<option value=\"24\" " . iif($setting['value']==24,'selected="selected"') . ">Servers</option>
+<option value=\"23\" " . iif($setting['value']==23,'selected="selected"') . ">Social Networks</option>
+<option value=\"39\" " . iif($setting['value']==39,'selected="selected"') . ">Facebook Fans/Likes</option>
+<option value=\"40\" " . iif($setting['value']==40,'selected="selected"') . ">Google +1</option>
+<option value=\"55\" " . iif($setting['value']==55,'selected="selected"') . ">Instagram</option>
+<option value=\"44\" " . iif($setting['value']==44,'selected="selected"') . ">Pinterest</option>
+<option value=\"56\" " . iif($setting['value']==56,'selected="selected"') . ">Reverbnation</option>
+<option value=\"48\" " . iif($setting['value']==48,'selected="selected"') . ">Social Bookmarks</option>
+<option value=\"54\" " . iif($setting['value']==54,'selected="selected"') . ">SoundCloud</option>
+<option value=\"34\" " . iif($setting['value']==34,'selected="selected"') . ">Twitter Followers</option>
+<option value=\"53\" " . iif($setting['value']==53,'selected="selected"') . ">Youtube</option>
+<option value=\"37\" " . iif($setting['value']==37,'selected="selected"') . ">Traffic</option>
+<option value=\"46\" " . iif($setting['value']==46,'selected="selected"') . ">Video</option>
+<option value=\"22\" " . iif($setting['value']==22,'selected="selected"') . ">Web 2.0</option>
+<option value=\"61\" " . iif($setting['value']==61,'selected="selected"') . ">Hubpage</option>
+<option value=\"60\" " . iif($setting['value']==60,'selected="selected"') . ">Squidoo</option>
+<option value=\"25\" " . iif($setting['value']==25,'selected="selected"') . ">Webhosting</option>
+<option value=\"52\" " . iif($setting['value']==52,'selected="selected"') . ">Cloud Hosting</option>
+<option value=\"27\" " . iif($setting['value']==27,'selected="selected"') . ">Dedicated</option>
+<option value=\"26\" " . iif($setting['value']==26,'selected="selected"') . ">VPS</option>
+</select>]]></optioncode>
+			</setting>
+			<setting varname="level" displayorder="6">
+				<datatype>free</datatype>
+				<optioncode><![CDATA[<select name=\"setting[$setting[varname]]\" tabindex=\"1\" class=\"bginput\">
+<option value=\"1\" " . iif($setting['value']==1,'selected="selected"') . ">1</option>
+<option value=\"2\" " . iif($setting['value']==2,'selected="selected"') . ">2</option>
+<option value=\"3\" " . iif($setting['value']==3,'selected="selected"') . ">3</option>
+<option value=\"4\" " . iif($setting['value']==3,'selected="selected"') . ">X</option>
+</select>]]></optioncode>
+			</setting>
+			<setting varname="guaranteed" displayorder="7">
+				<datatype>free</datatype>
+				<optioncode>yesno</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+			<setting varname="subscription" displayorder="8">
+				<datatype>free</datatype>
+				<optioncode>yesno</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+			<setting varname="onsale" displayorder="9">
+				<datatype>free</datatype>
+				<optioncode>yesno</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+			<setting varname="staff" displayorder="10">
+				<datatype>free</datatype>
+				<optioncode>yesno</optioncode>
+				<defaultvalue>0</defaultvalue>
+			</setting>
+		</settinggroup>
+	</options>
+	<helptopics>
+	</helptopics>
+	<cronentries>
+	</cronentries>
+	<faqentries>
+	</faqentries>
+	<navigation>
+	</navigation>
+</product>
