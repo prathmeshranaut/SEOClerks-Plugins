@@ -187,8 +187,9 @@ function seoclerks_settings()
 
 function seoclerks_block_view($delta = '')
 {
+	global $base_url;
     	//Making the ad URL
-    	$url = "http://localhost:8888/unserilaize.php?type=inlinead&s=". variable_get('seoclerks_manage_search')."&aff=".variable_get('seoclerks_manage_affiliate')."&by=".variable_get('seoclerks_manage_username')."&p=". variable_get('seoclerks_manage_price')."&c=".variable_get('seoclerks_manage_category') ."&ul=" .variable_get('seoclerks_manage_user_level'). "&g=" .variable_get('seoclerks_manage_guaranteed')."&sub=" .variable_get('seoclerks_manage_subscription')."&os=" .variable_get('seoclerks_manage_on_sale')."&sp=" .variable_get('seoclerks_manage_staff');
+    	$url = $base_url."/sites/all/modules/seoclerks/load_data.php?type=inlinead&s=". variable_get('seoclerks_manage_search')."&aff=".variable_get('seoclerks_manage_affiliate')."&by=".variable_get('seoclerks_manage_username')."&p=". variable_get('seoclerks_manage_price')."&c=".variable_get('seoclerks_manage_category') ."&ul=" .variable_get('seoclerks_manage_user_level'). "&g=" .variable_get('seoclerks_manage_guaranteed')."&sub=" .variable_get('seoclerks_manage_subscription')."&os=" .variable_get('seoclerks_manage_on_sale')."&sp=" .variable_get('seoclerks_manage_staff');
     	
     	//Making the content :)
     	$content = "<div id='ad_".$delta."'></div>

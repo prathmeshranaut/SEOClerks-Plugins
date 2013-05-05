@@ -28,7 +28,7 @@
 			
 			$options = XenForo_Application::get('options');
 			
-			$url = "http://localhost:8888/unserilaize.php?";
+			$url = $options->boardUrl."/load_data.php?";
 			
 			// Appending the Seller username to the main url
 			$url .= "by=". $options->seller_username;
@@ -66,7 +66,7 @@
 			$url .= "&sp=". $options->staff_certified_only;
 			
 			// Appending the custom data that I need to handle
-			$url .= "&oby=&oh=&f=serialized";
+			$url .= "&oby=&oh=&f=singlehtml";
 			
 			return $url;
 		}
