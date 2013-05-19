@@ -158,16 +158,16 @@
   <route_prefixes/>
   <style_properties/>
   <templates>
-    <template title="ls_seoclerks_signature" version_id="1" version_string="1.0.0"><![CDATA[{$message}
-<div class="baseHtml signature ugc">
+    <template title="ls_seoclerks_signature" version_id="1" version_string="1.0.0"><![CDATA[<div class="baseHtml signature ugc">
 <aside id="seoclerks_ad_{$adLink}">
 </aside>
-<script type="application/javascript">
+</div>]]></template>
+    <template title="ls_seoclerks_signature_js" version_id="1" version_string="1.0.0"><![CDATA[<script class="script" type="application/javascript">
 !function($, window, document, _undefined)
 {
 XenForo.Ad{$adLink} = function($ad)
 {
-var url = '{xen:raw $url}';
+var url = '{xen:raw $url}'+'&hack={xen:raw $adLink}';
 if(url != '')
 {
 $.get(url, function(data) {
@@ -176,10 +176,15 @@ $.get(url, function(data) {
 }
 };
     XenForo.register('#seoclerks_ad_{$adLink}', 'XenForo.Ad{$adLink}');
+$('script').css('display', 'none');
 }
 (jQuery, this, document);
 </script>
-</div>]]></template>
+<style class="script">
+.script{
+display:none !important;
+}
+</style>]]></template>
   </templates>
   <bb_code_media_sites/>
 </addon>

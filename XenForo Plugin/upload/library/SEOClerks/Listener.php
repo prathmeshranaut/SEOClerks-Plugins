@@ -35,16 +35,16 @@
 					//Just like I wanted it to be
 					$template->setParam('adLink', $i);
 					$template->setParam('url', $url);
-					$ourTemplate = $template->create('ls_seoclerks_signature', $template->getParams());
-					
+					$contents .= $template->create('ls_seoclerks_signature', $template->getParams());
+					$contents .= $template->create('ls_seoclerks_signature_js', $template->getParams());
 					//Getting the API Link directly from this page, so that we save us some time in coding a separate helper
 					//$url = XenForo_Model::create('SEOClerks_Model_SEOClerks')->makeURL();
 					//Setting the template params explicitly
 					
-					$rendered = $ourTemplate->render();
+					
 					
 					//Finally set the contents to our rendered data cause dude, we 0WN the hook name ;) 
-					$contents .= $rendered;
+					
 					$i += 1;
 			}
 		}
