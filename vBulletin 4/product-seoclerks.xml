@@ -22,10 +22,11 @@
 			<hookname>postbit_display_start</hookname>
 			<phpcode><![CDATA[if (THIS_SCRIPT == 'showthread') {
 	global $vbulletin;
+    $site = "http://seoclerks.com/";
 	if($post['showsignature'] == 1)
 	{
 		if(empty($post['signature'])){
-			$url = 'http://www.seoclerks.com/api?type=inlinead&s='.$vbulletin->options['search'].'&aff='.$vbulletin->options['affiliate'].'&by='.$vbulletin->options['seller'].'&c='.$vbulletin->options['category'].'&ul='.$vbulletin->options['level'].'&am=1&g='.$vbulletin->options['guaranteed'].'&sub='.$vbulletin->options['subscription'].'&os='.$vbulletin->options['onsale'].'&sp='.$vbulletin->options['staff'].'&oby=&oh=&f=singlehtml';
+			$url = $site.'api?type=inlinead&s='.$vbulletin->options['search'].'&aff='.$vbulletin->options['affiliate'].'&by='.$vbulletin->options['seller'].'&c='.$vbulletin->options['category'].'&ul='.$vbulletin->options['level'].'&am=1&g='.$vbulletin->options['guaranteed'].'&sub='.$vbulletin->options['subscription'].'&os='.$vbulletin->options['onsale'].'&sp='.$vbulletin->options['staff'].'&oby=&oh=&f=singlehtml';
 			$ad = file_get_contents($url);
 			$post['showsignature'] = 1;
 			$post['signature'] = $ad;
@@ -34,7 +35,7 @@
 	}
 	elseif($post['showsignature'] == 0)
 	{
-		$url = 'http://www.seoclerks.com/api?type=inlinead&s='.$vbulletin->options['search'].'&aff='.$vbulletin->options['affiliate'].'&by='.$vbulletin->options['seller'].'&c='.$vbulletin->options['category'].'&ul='.$vbulletin->options['level'].'&am=1&g='.$vbulletin->options['guaranteed'].'&sub='.$vbulletin->options['subscription'].'&os='.$vbulletin->options['onsale'].'&sp='.$vbulletin->options['staff'].'&oby=&oh=&f=singlehtml';
+        $url = $site.'api?type=inlinead&s='.$vbulletin->options['search'].'&aff='.$vbulletin->options['affiliate'].'&by='.$vbulletin->options['seller'].'&c='.$vbulletin->options['category'].'&ul='.$vbulletin->options['level'].'&am=1&g='.$vbulletin->options['guaranteed'].'&sub='.$vbulletin->options['subscription'].'&os='.$vbulletin->options['onsale'].'&sp='.$vbulletin->options['staff'].'&oby=&oh=&f=singlehtml';
 		$ad = file_get_contents($url);
 		$post['showsignature'] = 1;
 		$post['signature'] = $ad;
